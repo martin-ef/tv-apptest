@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>App-Test</title>
+<style>
+  body { margin: 0; padding: 48px 64px; background: #111; color: #eee; font-family: sans-serif; }
+  h1 { font-size: 40px; margin: 0 0 12px; }
+  p { font-size: 24px; color: #aaa; margin: 0 0 24px; }
+  pre { font-size: 20px; line-height: 1.4; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>App-Test</h1>
+<p>Dienst läuft, wenn unten Einträge erscheinen. Jetzt Netflix starten, zurück, Home drücken. Das Protokoll ist am Mac unter http://192.168.107.87:8095/log abrufbar.</p>
+<pre id="log">Warte auf Dienst …</pre>
+<script>
+  function load() {
+    var x = new XMLHttpRequest();
+    x.onload = function () { document.getElementById('log').textContent = x.responseText.split('\n').slice(-30).join('\n'); };
+    x.onerror = function () { document.getElementById('log').textContent = 'Dienst noch nicht erreichbar …'; };
+    x.open('GET', 'http://127.0.0.1:8095/log');
+    x.send();
+  }
+  load();
+  setInterval(load, 2000);
+</script>
+</body>
+</html>

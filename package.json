@@ -1,0 +1,11 @@
+{
+  "name": "tv-apptest",
+  "version": "0.0.1",
+  "description": "Test: erkennt der TizenBrew-Dienst, welche App im Vordergrund laeuft?",
+  "packageType": "app",
+  "appName": "App-Test",
+  "appPath": "app/index.html",
+  "serviceFile": "service.js",
+  "keys": [],
+  "license": "MIT"
+}
